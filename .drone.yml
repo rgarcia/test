@@ -6,8 +6,8 @@ publish:
     script:
       - echo "make release"
       - mkdir release
-      - echo "asdf" release/asdf.txt
-      - echo "qwer" release/qwer.txt
+      - echo "asdf" > release/asdf.txt
+      - echo "qwer" > release/qwer.txt
     artifacts:
       - release
     tag: $(cat VERSION)
