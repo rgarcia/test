@@ -1,13 +1,16 @@
 image: bradrydzewski/go:1.3
 script:
-  - make test
-notify:
-  email:
-    recipients:
-      - drone@clever.com
-  hipchat:
-    room: Clever-Dev-CI
-    token: {{hipchatToken}}
-    on_started: true
-    on_success: true
-    on_failure: true
+  - echo "make test"
+publish:
+  github:
+    script:
+      - echo "make release"
+      - mkdir release
+      - echo "asdf" release/asdf.txt
+      - echo "qwer" release/qwer.txt
+    artifacts:
+      - release
+    tag: $(cat VERSION)
+    token: {{github_token}}
+    user: rgarcia
+    repo: test
